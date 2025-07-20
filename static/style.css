@@ -170,6 +170,19 @@ body {
     }
 }
 
+/* this media query for better back button alignment on mobile */
+@media (max-width: 600px) {
+    .btn.mb-3, .btn.mb-3:active, .btn.mb-3:focus {
+        position: static !important;
+        width: 100%;
+        max-width: 100%;
+        margin: 1rem 0 1.2rem 0 !important;
+        display: block;
+        text-align: center;
+        font-size: 1rem;
+    }
+}
+
 /* Alert styling */
 .alert-danger {
     background: rgba(255, 0, 70, 0.08);
