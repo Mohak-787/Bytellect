@@ -1,7 +1,5 @@
 # Bytellect: A Modern Flask Quiz Platform
 
-#### Video Demo: `<URL HERE>`
-
 #### Developed by: Mohak Devkota
 
 #### CS50 Final Project – 2025
