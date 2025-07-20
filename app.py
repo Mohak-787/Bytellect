@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # -------------------- Flask App Setup --------------------
 
 app = Flask(__name__)
-app.secret_key = 'dev_secret_key_1234567890'  # Use a secure secret key in production
+app.secret_key = 'dev_secret_key_1234567890'  
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 DATABASE = 'quiz.db'
