@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard - Bytellect{% endblock %}
+
+{% block body %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Bytellect</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('questions') }}">Questions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('settings') }}">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="logoutModal">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="dashboard-card">
+    <h1>Select Quiz Mode</h1>
+    <form action="/dashboard" method="post" class="mt-4 d-flex flex-column align-items-center">
+        <p>Select mode of quiz</p>
+        <input type="hidden" name="reset" value="true">
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <button type="submit" name="mode" value="rapid" class="btn btn-danger">Rapid</button>
+            <button type="submit" name="mode" value="survival" class="btn btn-warning">Survival</button>
+            <button type="submit" name="mode" value="standard" class="btn btn-primary">Standard</button>
+        </div>
+    </form>
+</div>
+
+<!-- Logout Modal -->
+<div id="logoutModal">
+    <div class="logout_modal_content">
+        <p>Are you sure you want to log out?</p>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Yes, log me out</a>
+        <button class="btn btn-secondary" data-close="logoutModal">Cancel</button>
+    </div>
+</div>
+
+{% endblock %}

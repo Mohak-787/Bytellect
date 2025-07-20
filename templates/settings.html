@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}Settings - Bytellect{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <a href="{{ url_for('dashboard') }}" class="btn btn-primary mb-3 back-btn-fixed">
+        <i class="bi bi-arrow-left"></i> Back to Dashboard
+    </a>
+</div>
+
+<div class="settings-card container">
+
+    <h1>Settings</h1>
+
+    <div class="index-divider"></div> <!-- Divider added here -->
+    
+    <!-- ACCOUNT SETTINGS -->
+    <h2>Account Settings</h2>
+    <a href="{{ url_for('profile') }}" class="settings_link">View Profile</a><br>
+    <a href="{{ url_for('change_password') }}" class="settings_link">Change Password</a><br>
+    <a href="#" class="settings_link" data-toggle="deleteModal">Delete Account</a><br>
+
+    <!-- LOGOUT -->
+    <h2 class="mt-4">Logout</h2>
+    <a href="#" class="settings_link" data-toggle="logoutModal">Logout</a>
+</div>
+
+<!-- Logout Modal -->
+<div id="logoutModal">
+    <div class="logout_modal_content">
+        <p>Are you sure you want to log out?</p>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Yes, log me out</a>
+        <button class="btn btn-secondary" data-close="logoutModal">Cancel</button>
+    </div>
+</div>
+
+<!-- Delete Account Modal -->
+<div id="deleteModal">
+    <div class="logout_modal_content">
+        <p>Are you sure you want to <strong>delete your account</strong>?</p>
+        <a href="{{ url_for('delete_account') }}" class="btn btn-danger">Yes, delete my account</a>
+        <button class="btn btn-secondary" data-close="deleteModal">Cancel</button>
+    </div>
+</div>
+
+{% endblock %}

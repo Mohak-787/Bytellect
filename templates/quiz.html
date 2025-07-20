@@ -1,0 +1,68 @@
+{% extends "layout.html" %} 
+
+{% block title %}Quiz - Bytellect{% endblock %}
+
+{% block body %}
+
+<a href="{{ url_for('dashboard') }}" class="btn btn-primary mb-3 back-btn-fixed">
+    <i class="bi bi-arrow-left"></i> Back to Dashboard
+</a>
+
+<div class="quiz-card">
+    {% if mode == 'rapid' %}
+    <h1>Rapid Quiz Mode</h1>
+    <p class="quiz-desc">Answer questions as quickly as possible!</p>
+    <div id="rapid-timer" class="mb-3" style="font-size:1.2rem; color:#ffd200; font-weight:600;">
+        Time Left: <span id="timer-value" data-remaining="{{ remaining|default(300) }}">
+            {{ "%02d:%02d"|format((remaining or 300)//60, (remaining or 300)%60) }}
+        </span>
+    </div>
+    {% elif mode == 'survival' %}
+    <h1>Survival Quiz Mode</h1>
+    <p class="quiz-desc">Answer questions correctly to stay in the game!</p>
+    {% elif mode == 'standard' %}
+    <h1>Standard Quiz Mode</h1>
+    <p class="quiz-desc">Answer questions at your own pace.</p>
+    {% endif %}
+
+    <div class="quiz-area-box">
+        <div class="quiz_area">
+            {% if question %}
+            <form action="{{ url_for('quiz') }}?mode={{ mode }}" method="post">
+                <input type="hidden" name="mode" value="{{ mode }}">
+                <input type="hidden" id="remaining" name="remaining" value="{{ remaining|default(300) }}">
+                <div class="question my-3">
+                    <h2>{{ question.text }}</h2>
+                </div>
+
+                <div class="options mb-3">
+                    {% for option in question.options %}
+                    <label class="option-label d-block">
+                        <input type="radio" name="answer" value="{{ option.id }}" {% if selected==option.id %}checked{% endif %}>
+                        <span>{{ option.id }}) {{ option.text }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+
+                <div class="button-row d-flex gap-2">
+                    <button type="submit" name="action" value="submit" class="btn btn-primary">Submit Answer</button>
+                    <button type="submit" name="action" value="next" class="btn btn-primary">Next</button>
+                </div>
+
+                {% if feedback %}
+                <p class="mt-3 quiz-feedback">{{ feedback }}</p>
+                {% endif %}
+            </form>
+            {% else %}
+            <div class="alert alert-info mt-4">
+                No more questions available or quiz is over.
+            </div>
+            {% if feedback %}
+            <p class="mt-3 quiz-feedback">{{ feedback }}</p>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

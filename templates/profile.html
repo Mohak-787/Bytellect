@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}Profile - Bytellect{% endblock %}
+
+{% block body %}
+
+<a href="{{ url_for('dashboard') }}" class="btn btn-primary mb-3 back-btn-fixed">
+    <i class="bi bi-arrow-left"></i> Back to Dashboard
+</a>
+
+<div class="profile-card">
+    <div class="profile-header text-center mb-4">
+        <div class="profile-avatar mb-3">
+            <i class="bi bi-person-circle"></i>
+        </div>
+        <h1 class="profile-username">{{ user.username }}</h1>
+    </div>
+    <div class="profile-info">
+        <h2>User Information</h2>
+        <ul class="profile-list">
+            <li><strong>Full Name:</strong> {{ user.fullname }}</li>
+            <li><strong>Username:</strong> {{ user.username }}</li>
+            <li><strong>Email:</strong> {{ user.email }}</li>
+        </ul>
+        <div class="index-divider"></div>
+        <h2>Account Settings</h2>
+        <div class="profile-actions">
+            <a href="{{ url_for('change_password') }}" class="btn btn-outline-primary mt-2">Change Password</a>
+            <a href="#" class="btn btn-outline-danger mt-2" data-toggle="deleteModal">Delete Account</a>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Account Modal -->
+<div id="deleteModal">
+    <div class="logout_modal_content">
+        <p>Are you sure you want to <strong>delete your account</strong>? </p>
+        <a href="{{ url_for('delete_account') }}" class="btn btn-danger">Yes, delete my account</a>
+        <button class="btn btn-secondary" data-close="deleteModal">Cancel</button>
+    </div>
+</div>
+
+{% endblock %}

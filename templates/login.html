@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}Login - Bytellect{% endblock %}
+
+{% block body %}
+
+<div class="d-flex justify-content-center align-items-center vh-100 position-relative">
+
+    <a href="{{ url_for('index') }}" class="btn btn-primary mb-3" style="position: absolute; top: 2rem; left: 2rem; z-index: 10;">
+        <i class="bi bi-arrow-left"></i> Back
+    </a>
+
+    <div class="container" style="max-width: 420px;">
+        <div class="card shadow-sm w-100">
+            <div class="card-body p-4">
+                <h2 class="card-title mb-3">Login to Bytellect</h2>
+                <p class="mb-4 text-muted">Welcome back! Access your account below.</p>
+
+                <form action="/login" method="post" novalidate>
+                    <div class="mb-3">
+                        <label for="username" class="form-label visually-hidden">Username</label>
+                        <input type="text" id="username" name="username" value="{{ username|default('') }}"
+                            class="form-control" placeholder="Username" autofocus autocomplete="off" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label visually-hidden">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                            autocomplete="off" required />
+                    </div>
+
+                    {% if error %}
+                    <div class="alert alert-danger py-2" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endif %}
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <p class="mb-0 small" style="color: #B0B8C1;">
+                            Don't have an account? <a href="/register" class="text-decoration-none">Register here</a>
+                        </p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

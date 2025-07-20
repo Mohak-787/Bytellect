@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}Bytellect{% endblock %}
+
+{% block body %}
+
+<div class="index-hero text-center">
+  <h1>Welcome to Bytellect</h1>
+  <p>Test your Computer Science knowledge with fun and challenging MCQs.</p>
+
+  {% if session.get('user_id') %}
+  <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg mt-3">Go to Dashboard</a>
+  {% else %}
+  <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg mt-3">Start Quiz</a>
+  {% endif %}
+</div>
+
+<div class="index-divider"></div>
+
+<div class="about">
+  <h2>About Bytellect</h2>
+  <p>Bytellect is an innovative online platform dedicated to helping computer science enthusiasts, students, and
+    professionals sharpen their skills through engaging and interactive multiple-choice quizzes.</p>
+
+  <p>Whether you’re preparing for exams, coding interviews, or simply aiming to deepen your understanding of core
+    computer science concepts, Bytellect offers a comprehensive and enjoyable learning experience tailored to your
+    needs.</p>
+
+  <h3>Explore Our Quiz Modes</h3>
+  <ul>
+    <li><strong>Rapid Mode:</strong> Challenge yourself against the clock and answer as many questions as possible
+      within a limited time.</li>
+    <li><strong>Survival Mode:</strong> Test your accuracy — one wrong answer, and the game is over. How far can you go?
+    </li>
+    <li><strong>Standard Mode:</strong> Learn at your own pace with no time constraints or pressure.</li>
+  </ul>
+
+  <h3>Key Features</h3>
+  <ul>
+    <li><strong>Extensive Question Bank:</strong> Access a wide range of carefully curated questions covering
+      fundamental and advanced computer science topics.</li>
+    <li><strong>Adaptive Learning:</strong> Track your progress and receive feedback to focus on areas that need
+      improvement.</li>
+    <li><strong>User Profiles:</strong> Manage your account, view your quiz history, and monitor your scores over time.
+    </li>
+    <li><strong>Customizable Themes:</strong> Choose between light and dark modes for a comfortable quiz experience.
+    </li>
+    <li><strong>Secure and Private:</strong> Your data is protected with secure authentication and password encryption.
+    </li>
+    <li><strong>Responsive Design:</strong> Enjoy a seamless experience on desktops, tablets, and smartphones.</li>
+  </ul>
+
+  <p>At Bytellect, we believe learning should be engaging, accessible, and rewarding. Join thousands of users who are
+    advancing their computer science knowledge every day.</p>
+
+  <p><strong>Ready to test your skills and boost your confidence?</strong> Click the <em>Start Quiz</em> button above
+    and embark on your learning journey today!</p>
+</div>
+
+{% endblock %}
